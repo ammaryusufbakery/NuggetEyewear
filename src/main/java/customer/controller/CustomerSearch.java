@@ -66,7 +66,7 @@ public class CustomerSearch extends HttpServlet {
 		    }
 		    
 		    Statement stmnt2 = con.createStatement();
-			ResultSet rs2 = stmnt2.executeQuery("SELECT * FROM profile p1 JOIN (SELECT custid, MAX(profileid) profid FROM profile WHERE custid=" + id + " GROUP BY custid) p2 ON p1.custid=p2.custid AND p1.profileid=p2.profid");
+			ResultSet rs2 = stmnt2.executeQuery("SELECT * FROM spectacleprofile p1 JOIN (SELECT custid, MAX(specprofileid) profid FROM spectacleprofile WHERE custid=" + id + " GROUP BY custid) p2 ON p1.custid=p2.custid AND p1.specprofileid=p2.profid");
 			if(rs2.next()){
 				profileid = rs2.getInt(1);
 			}
