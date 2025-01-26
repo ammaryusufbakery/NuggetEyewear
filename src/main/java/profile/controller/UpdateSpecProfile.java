@@ -49,7 +49,7 @@ public class UpdateSpecProfile extends HttpServlet {
 	    try {
 	    	Connection con = OracleConnection.getConnection();
 	    	
-	    	String sql = "UPDATE profile SET profilepowerleft=?, profilepowerright=?, profileprescription=?, profileastigmatism=? WHERE profileid=" + profileid;
+	    	String sql = "UPDATE spectacleprofile SET specprofileleft=?, specprofileright=?, specprofileprescription=?, specprofileastigmatism=? WHERE specprofileid=" + profileid;
 			PreparedStatement ps = con.prepareStatement(sql);
 			
 			ps.setDouble(1, powerLeft);
