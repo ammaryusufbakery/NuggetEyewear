@@ -73,7 +73,7 @@ public class AddSpecProfile extends HttpServlet {
 					 */
 					
 					//String sql = "INSERT INTO profile VALUES(profileid_seq.NEXTVAL, ?,?,?,?,?)";
-					String sql = "INSERT INTO profile(profilepowerleft, profilepowerright, profileprescription, profileastigmatism, custid) VALUES(?,?,?,?,?)";
+					String sql = "INSERT INTO spectacleprofile(specprofileleft, specprofileright, specprofileprescription, specprofileastigmatism, custid) VALUES(?,?,?,?,?)";
 					PreparedStatement ps = con.prepareStatement(sql);
 					
 					ps.setDouble(1, powerLeft);
@@ -85,7 +85,7 @@ public class AddSpecProfile extends HttpServlet {
 					ps.executeUpdate();
 					
 					Statement stmnt2 = con.createStatement();
-					ResultSet rs2 = stmnt2.executeQuery("SELECT profileid_seq.CURRVAL FROM DUAL");
+					ResultSet rs2 = stmnt2.executeQuery("SELECT SCOPE_IDENTITY()");
 					while(rs2.next()) {
 						profileid = rs2.getInt(1);
 					}
