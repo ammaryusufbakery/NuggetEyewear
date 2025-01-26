@@ -211,7 +211,7 @@ footer  button {
             <%
         if(role!=null && role.equals("staff")){ %>
        		<div>
-        		<p>Welcome, ${name}</p>
+        		<p>Welcome, ${sessionScope.name}</p>
         	</div>
         	<div>
         		<a href="ProfileStaffView.jsp">
