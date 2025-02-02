@@ -225,7 +225,7 @@ footer form button {
             </div>
             <div class="form-group">
                 <label for="add">Address</label>
-                <textarea id="add" name="add" rows="4" cols="50" placeholder="Enter your address" required></textarea>
+                <textarea id="add" name="add" rows="4" cols="50" placeholder="Enter your address" style="resize: none;" required></textarea>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>

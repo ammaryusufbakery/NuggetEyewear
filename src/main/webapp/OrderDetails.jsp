@@ -65,7 +65,8 @@ main {
 	
 .back-button {
 	text-align: left;
-	margin-bottom: 20px;
+	margin-left:20px;
+	margin-top: 20px;
 }
 	
 .back-button a {
@@ -200,18 +201,15 @@ footer  button {
             <%
         String role = (String) session.getAttribute("role");
         if(role==null){ %>
-       		<a href="#">FRAME</a>
-            <a href="#">LENS</a>
-       		<a href="Login.jsp">log in</a>
-            <a href="Signup.jsp">sign up</a>
+       		<a href="CustomerFrame.jsp">PRODUCT</a>
+       		<a href="Login.jsp">LOG IN</a>
+            <a href="Signup.jsp">SIGN UP</a>
         <%	
         }
         else if(role.equals("staff")){ %>
-        	<a href="AddProduct.jsp">PRODUCT</a>
-            <a href="spectacleProfile.jsp">SPECTACLE PROFILE</a>
-            <a href="OrderDetails.jsp">ORDER</a>
+        	<a href="ProductList.jsp">PRODUCT</a>
             <a href="CustomerSearch.jsp">CUSTOMER</a>
-            <a href="StaffLogout">log out</a>
+            <a href="StaffLogout">LOG OUT</a>
         <%
         }%>
         </div>
@@ -230,10 +228,13 @@ footer  button {
         </div>
     </div>
      <!-- Main Content -->
-    <main>
-    <!-- <div class="back-button"> 
-    <a href="index.jsp">&#x2190; Back</a>
-</div>-->
+    
+    <div class="back-button"> 
+    <a href="CustomerSearch.jsp">&#x2190; Back</a>
+</div>
+
+<main>
+    
        
         <form action="AddOrder" method="post">
          <h1>Order Details</h1>

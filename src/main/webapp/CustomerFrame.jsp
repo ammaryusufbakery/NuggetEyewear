@@ -252,10 +252,11 @@ pageEncoding="ISO-8859-1"%>
         padding: 10px;
         font-weight: bolder;
         text-transform: uppercase;
+        color: gray;
       }
       .heading span {
         margin-left: 5px;
-        color: seagreen;
+        color: brown;
       }
       .product .box-container {
         display: flex;
@@ -547,13 +548,37 @@ pageEncoding="ISO-8859-1"%>
             </a>
           </div>
           <div class="menu">
-            <a href="#">FRAME</a>
-            <a href="#">LENS</a>
-            <a href="spectacleProfile.jsp">SPECTACLE PROFILE</a>
-            <a href="OrderDetails.jsp">ORDER</a>
-          </div>
-          <div class="profile">
-            <img src="images/profile.png" alt="Profile" />
+            <%
+        String role = (String) session.getAttribute("role");
+        if(role==null){ %>
+       		<a href="CustomerFrame.jsp">PRODUCT</a>
+       		<a href="Login.jsp">LOG IN</a>
+            <a href="Signup.jsp">SIGN UP</a>
+        <%	
+        } 
+        else if (role.equals("customer")){ 
+        Integer custidInt = (Integer) session.getAttribute("id");
+		int custid = custidInt;%>
+        	<a href="CustomerFrame.jsp">PRODUCT</a>
+            <a href="CustomerSpectacleProfile.jsp?custid=<%= custid%>">SPECTACLE PROFILE</a>
+            <a href="CustomerOrderDetails.jsp?custid=<%= custid%>">ORDER</a>
+            <a href="StaffLogout">LOG OUT</a>
+        <%
+        }
+        %>
+        </div>
+        <div class="profile">
+        <%	
+        if(role!=null && role.equals("customer")){ %>
+    	<div>
+        		<p>Welcome, ${name}</p>
+        	</div>
+        	<div>
+        		<a href="ProfileCustomerView.jsp">
+            	<img src="images/profile.png" alt="Profile"></a>
+        	</div>
+    	<%
+    	}%>
           </div>
         </div>
       </header>

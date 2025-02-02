@@ -74,7 +74,12 @@
             height: 30px;
             border-radius: 50%;
             margin-left: 8px;
+            padding-top : 10px;
         }
+        
+header .profile {
+display: flex;
+}
        
         h1{
 	   color: #333;
@@ -82,6 +87,29 @@
 	   margin-bottom: 20px;
 	   text-align:center;
         }
+        
+                .back-button {
+	text-align: left;
+	margin-top: 20px;
+	margin-left:20px;
+	
+}
+	
+.back-button a {
+	display: inline-block;
+	color:white;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 15px;
+	background-color: #a4713d;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+.back-button a:hover {
+	  background-color: #c4a484;
+	  color: black;
+}
         
        
        button .footer {
@@ -139,6 +167,22 @@
 
         .submit-button:hover {
             background-color: #0056b3;
+        }
+        
+        .radio-group {
+        display: flex;
+        gap: 1rem;
+        margin-left: 105px;
+        }
+        
+        .radio-item {
+        display: flex;
+        align-items: center;
+        }
+        
+        .radio-item label{
+        margin-left: 0.5rem;
+        margin-top: 0.25rem;
         }
 
         /* Footer Styling */
@@ -201,20 +245,59 @@
                     </a>
                 </div>
                 <div class="menu">
-                    <a href="ProductList.jsp">PRODUCT</a>
-                    <a href="spectacleProfile.jsp">SPECTACLE PROFILE</a>
-                    <a href="OrderDetails.jsp">ORDER</a>
-                </div>
-                <div class="profile">
-                    <img src="images/profile.png" alt="Profile">
+                    <%
+        String role = (String) session.getAttribute("role");
+        if(role==null){ %>
+       		<a href="CustomerFrame.jsp">PRODUCT</a>
+       		<a href="Login.jsp">LOG IN</a>
+            <a href="Signup.jsp">SIGN UP</a>
+        <%	
+        }
+        else if(role.equals("staff")){ %>
+        	<a href="ProductList.jsp">PRODUCT</a>
+            <a href="CustomerSearch.jsp">CUSTOMER</a>
+            <a href="StaffLogout">LOG OUT</a>
+        <%
+        }%>
+        </div>
+        <div class="profile">
+            <%
+        if(role!=null && role.equals("staff")){ %>
+       		<div>
+        		<p>Welcome, ${name}</p>
+        	</div>
+        	<div>
+        		<a href="ProfileStaffView.jsp">
+            	<img src="images/profile.png" alt="Profile"></a>
+        	</div>
+        <%	
+        }%>
                 </div>
             </div>
         </header>
 
         <!-- Main Content Section -->
+        
+        <div class="back-button">
+    <a href="ProductList.jsp">&#x2190; Back</a>
+</div>
+
        <main>
-    <div class="form-container">
-        <form id="productForm" action="AddProduct" method="post">
+       <div class="form-container">
+       
+       <p>Choose type of product to add:</p>
+       <br>
+            <div class="radio-group">
+            <div class="radio-item"><input type="radio" id="frame" name="product" value="Frame" onclick="toggleSelection()">
+                <label for="frame">Frame</label></div>
+                
+				<div class="radio-item"><input type="radio" id="lens" name="product" value="Lens" onclick="toggleSelection()">
+                <label for="lens">Lens</label></div>
+                
+            </div>
+            
+    
+        <form id="productFormFrame" action="AddProduct" method="post" style="display: none;">
             <div class="form-group">
                 <label for="productName">Product Name</label>
                 <input type="text" id="productName" name="productName" required>
@@ -234,11 +317,73 @@
                 <label for="frameColor">Frame Color</label>
                 <input type="text" id="frameColor" name="frameColor" required>
             </div>
+            
+            <div class="form-group">
+                <label for="productPrice">Price</label>
+                <input type="number" id="productPrice" name="productPrice" step="0.01" required>
+            </div>
+
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+        
+        <form id="productFormLens" action="AddProduct" method="post" style="display: none;">
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text" id="productName" name="productName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="productBrand">Product Brand</label>
+                <input type="text" id="productBrand" name="productBrand" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="lensPrescription">Lens Prescription</label>
+                <select id="lensPrescription" name="lensPrescription" required>
+        		<option value=" "> </option>
+        		<option value="Short-sightedness">Short-sightedness</option>
+        		<option value="Long-sightedness">Long-sightedness</option>
+    			</select>
+            </div>
+
+            <div class="form-group">
+                <label for="lensAstigmatism">Lens Astigmatism</label>
+                <select id="lensAstigmatism" name="lensAstigmatism" required>
+        		<option value=" "> </option>
+        		<option value="Yes">Yes</option>
+        		<option value="No">No</option>
+    			</select>
+            </div>
+            
+            <div class="form-group">
+                <label for="productPrice">Price</label>
+                <input type="number" id="productPrice" name="productPrice" step="0.01" required>
+            </div>
 
             <button type="submit" class="submit-button">Submit</button>
         </form>
     </div>
 </main>
+
+<script>
+    function toggleSelection() {
+        // Get the value of the selected radio button
+        var shipToOutlet = document.querySelector('input[name="product"]:checked').value;
+
+        // Get the outlet and address elements
+        var outletDiv = document.getElementById("productFormFrame");
+        var outletLabel = document.getElementById("productFormLens");
+
+        // Show/hide elements based on the selected option
+        if (shipToOutlet === "Frame") {
+            outletDiv.style.display = "block";
+            outletLabel.style.display = "none";
+        } else {
+            outletDiv.style.display = "none";
+            outletLabel.style.display = "block";
+        }
+    }
+</script>
 
 
         

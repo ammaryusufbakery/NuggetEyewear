@@ -193,20 +193,18 @@ footer  button {
             <%
         String role = (String) session.getAttribute("role");
         if(role==null){ %>
-       		<a href="#">FRAME</a>
-            <a href="#">LENS</a>
-       		<a href="Login.jsp">log in</a>
-            <a href="Signup.jsp">sign up</a>
+       		<a href="CustomerFrame.jsp">PRODUCT</a>
+       		<a href="Login.jsp">LOG IN</a>
+            <a href="Signup.jsp">SIGN UP</a>
         <%	
         } 
         else if (role.equals("customer")){ 
         Integer custidInt = (Integer) session.getAttribute("id");
 		int custid = custidInt;%>
-        	<a href="#">FRAME</a>
-            <a href="#">LENS</a>
+        	<a href="CustomerFrame.jsp">PRODUCT</a>
             <a href="CustomerSpectacleProfile.jsp?custid=<%= custid%>">SPECTACLE PROFILE</a>
             <a href="CustomerOrderDetails.jsp?custid=<%= custid%>">ORDER</a>
-            <a href="StaffLogout">log out</a>
+            <a href="StaffLogout">LOG OUT</a>
         <%
         }
         %>
@@ -247,13 +245,13 @@ try{
 	Connection con = OracleConnection.getConnection();
 	
 	Statement stmnt2 = con.createStatement();
-	ResultSet rs2 = stmnt2.executeQuery("SELECT * FROM profile p1 JOIN (SELECT custid, MAX(profileid) profid FROM profile WHERE custid=" + custid + " GROUP BY custid) p2 ON p1.custid=p2.custid AND p1.profileid=p2.profid");
+	ResultSet rs2 = stmnt2.executeQuery("SELECT * FROM spectacleprofile p1 JOIN (SELECT custid, MAX(specprofileid) profid FROM spectacleprofile WHERE custid=" + custid + " GROUP BY custid) p2 ON p1.custid=p2.custid AND p1.specprofileid=p2.profid");
 	if(rs2.next()){
 		profileid = rs2.getInt(1);
 	}
 	
 	Statement stmnt = con.createStatement();
-	ResultSet rs = stmnt.executeQuery("SELECT * FROM profile JOIN customer USING (custid) WHERE profileid=" + profileid);
+	ResultSet rs = stmnt.executeQuery("SELECT * FROM spectacleprofile JOIN customer USING (custid) WHERE specprofileid=" + profileid);
 	while(rs.next()){
 		name = rs.getString(7);
 		phone = rs.getString(8);
@@ -273,8 +271,16 @@ catch (Exception e){
 }
 %>
   
-<form action="" method="post">
-<h1>Spectacle Profile Details</h1>
+	<%
+	if(profileid==0){%>
+		<form>
+			<p><strong>No Spectacle Profile Record Found!</strong></p>
+		</form>
+	<%}
+	else{%>
+	
+	<form action="" method="post">
+	<h1>Spectacle Profile Details</h1>
     <input type="hidden" name="profileid" value="<%= profileid %>">
     
     <p><strong>Customer Name:</strong> <%= name %></p>
@@ -300,7 +306,7 @@ catch (Exception e){
     
     <p><strong>Astigmatism:</strong> <%= astigmatism %></p>
     <input type="hidden" name="astigmatism" value="<%= astigmatism %>">
-    
+    <%}%>
     
 </form>
 </div>

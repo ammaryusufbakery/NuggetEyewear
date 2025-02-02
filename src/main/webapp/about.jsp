@@ -158,8 +158,7 @@ footer form button {
             <%
         String role = (String) session.getAttribute("role");
         if(role==null){ %>
-       		<a href="#">FRAME</a>
-            <a href="#">LENS</a>
+       		<a href="CustomerFrame.jsp">PRODUCT</a>
        		<a href="Login.jsp">log in</a>
             <a href="Signup.jsp">sign up</a>
         <%	
@@ -167,17 +166,14 @@ footer form button {
         else if (role.equals("customer")){ 
         Integer custidInt = (Integer) session.getAttribute("id");
 		int custid = custidInt;%>
-        	<a href="#">FRAME</a>
-            <a href="#">LENS</a>
+        	<a href="CustomerFrame.jsp">PRODUCT</a>
             <a href="CustomerSpectacleProfile.jsp?custid=<%= custid%>">SPECTACLE PROFILE</a>
             <a href="CustomerOrderDetails.jsp?custid=<%= custid%>">ORDER</a>
             <a href="StaffLogout">log out</a>
         <%
         }
         else{ %>
-        	<a href="AddProduct.jsp">PRODUCT</a>
-            <a href="spectacleProfile.jsp">SPECTACLE PROFILE</a>
-            <a href="OrderDetails.jsp">ORDER</a>
+        	<a href="ProductList.jsp">PRODUCT</a>
             <a href="CustomerSearch.jsp">CUSTOMER</a>
             <a href="StaffLogout">log out</a>
         <%

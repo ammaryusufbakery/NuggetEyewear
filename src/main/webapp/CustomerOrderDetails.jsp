@@ -202,20 +202,18 @@ footer  button {
         <%
         String role = (String) session.getAttribute("role");
         if(role==null){ %>
-       		<a href="#">FRAME</a>
-            <a href="#">LENS</a>
-       		<a href="Login.jsp">log in</a>
-            <a href="Signup.jsp">sign up</a>
+       		<a href="CustomerFrame.jsp">PRODUCT</a>
+       		<a href="Login.jsp">LOG IN</a>
+            <a href="Signup.jsp">SIGN UP</a>
         <%	
         } 
         else if (role.equals("customer")){ 
         Integer custidInt = (Integer) session.getAttribute("id");
 		int custid = custidInt;%>
-        	<a href="#">FRAME</a>
-            <a href="#">LENS</a>
+        	<a href="CustomerFrame.jsp">PRODUCT</a>
             <a href="CustomerSpectacleProfile.jsp?custid=<%= custid%>">SPECTACLE PROFILE</a>
             <a href="CustomerOrderDetails.jsp?custid=<%= custid%>">ORDER</a>
-            <a href="StaffLogout">log out</a>
+            <a href="StaffLogout">LOG OUT</a>
         <%
         }
         %>
@@ -273,7 +271,7 @@ try{
 	}
 	
 	Statement stmnt2 = con.createStatement();
-	ResultSet rs2 = stmnt2.executeQuery("SELECT * FROM profile p1 JOIN (SELECT custid, MAX(profileid) profid FROM profile WHERE custid=" + custid + " GROUP BY custid) p2 ON p1.custid=p2.custid AND p1.profileid=p2.profid");
+	ResultSet rs2 = stmnt2.executeQuery("SELECT * FROM spectacleprofile p1 JOIN (SELECT custid, MAX(specprofileid) profid FROM spectacleprofile WHERE custid=" + custid + " GROUP BY custid) p2 ON p1.custid=p2.custid AND p1.specprofileid=p2.profid");
 	while(rs2.next()){
 		powerLeft = rs2.getDouble(2);
 		powerRight = rs2.getDouble(3);
@@ -291,10 +289,17 @@ try{
 }
 catch (Exception e){
 	System.out.println(e);
-	System.out.println("sini error 2");
 }
 %>
        
+        <%
+		if(orderid==0){%>
+			<form>
+				<p><strong>No Order Record Found!</strong></p>
+			</form>
+		<%}
+		else{%>
+        
         <form action="" method="post">
          <h1>Order Details</h1>
          <input type="hidden" name="orderid" value="<%= orderid %>">
@@ -312,7 +317,7 @@ catch (Exception e){
     <p><strong>Customer IC Number:</strong> <%= ic %></p>
     <input type="hidden" name="ic" value="<%= ic %>" readonly>
            
-           <h1>Spectacle Profile</h1>
+          
             
            
             <p><strong>Eye Power Left:</strong>  <%= powerLeft %></p>
@@ -330,7 +335,7 @@ catch (Exception e){
     		<!-- <br><br><label for="customerAddress">Ship Address</label> -->
     		<h1>Ship Address</h1>
             <textarea id="shipAdress" name="shipAddress" rows="4" cols="50" style="resize: none; width: 97%;" readonly><%= shipAddress %> </textarea>
-
+			<%}%>
  
        
         </form>

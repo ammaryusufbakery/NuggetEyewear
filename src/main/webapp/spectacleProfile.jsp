@@ -74,6 +74,29 @@ main {
             font-family: sans-serif;
             color: black;
         }
+        
+     .back-button {
+	text-align: left;
+	margin-top: 20px;
+	margin-left:20px;
+	
+}
+	
+.back-button a {
+	display: inline-block;
+	color:white;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 15px;
+	background-color: #a4713d;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+.back-button a:hover {
+	  background-color: #c4a484;
+	  color: black;
+}
 
 
         label {
@@ -188,18 +211,15 @@ footer  button {
             <%
         String role = (String) session.getAttribute("role");
         if(role==null){ %>
-       		<a href="#">FRAME</a>
-            <a href="#">LENS</a>
-       		<a href="Login.jsp">log in</a>
-            <a href="Signup.jsp">sign up</a>
+       		<a href="CustomerFrame.jsp">PRODUCT</a>
+       		<a href="Login.jsp">LOG IN</a>
+            <a href="Signup.jsp">SIGN UP</a>
         <%	
         }
         else if(role.equals("staff")){ %>
-        	<a href="AddProduct.jsp">PRODUCT</a>
-            <a href="spectacleProfile.jsp">SPECTACLE PROFILE</a>
-            <a href="OrderDetails.jsp">ORDER</a>
+        	<a href="ProductList.jsp">PRODUCT</a>
             <a href="CustomerSearch.jsp">CUSTOMER</a>
-            <a href="StaffLogout">log out</a>
+            <a href="StaffLogout">LOG OUT</a>
         <%
         }%>
         </div>
@@ -217,9 +237,17 @@ footer  button {
         }%>
         </div>
     </div>
-    <main>
+    
+    <div class="back-button">
+    <a href="CustomerSearch.jsp">&#x2190; Back</a>
+</div>
 
+    <main>
+    
     <form action="AddSpecProfile" method="post">
+    
+    
+    
      <h1>Add New Spectacle Profile</h1>
      <label for="ic">Customer IC Number</label>
     <input type="text" id="ic" name="ic" value="<%=request.getParameter("ic") %>" readonly>

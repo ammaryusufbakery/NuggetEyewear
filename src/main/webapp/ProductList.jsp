@@ -156,12 +156,33 @@
                     </a>
                 </div>
                 <div class="menu">
-                    <a href="AddProduct.jsp">PRODUCT</a>
-                    <a href="spectacleProfile.jsp">SPECTACLE PROFILE</a>
-                    <a href="OrderDetails.jsp">ORDER</a>
-                </div>
-                <div class="profile">
-                    <img src="images/profile.png" alt="Profile">
+                    <%
+        String role = (String) session.getAttribute("role");
+        if(role==null){ %>
+       		<a href="CustomerFrame.jsp">PRODUCT</a>
+       		<a href="Login.jsp">LOG IN</a>
+            <a href="Signup.jsp">SIGN UP</a>
+        <%	
+        }
+        else if(role.equals("staff")){ %>
+        	<a href="ProductList.jsp">PRODUCT</a>
+            <a href="CustomerSearch.jsp">CUSTOMER</a>
+            <a href="StaffLogout">LOG OUT</a>
+        <%
+        }%>
+        </div>
+        <div class="profile">
+            <%
+        if(role!=null && role.equals("staff")){ %>
+       		<div>
+        		<p>Welcome, ${name}</p>
+        	</div>
+        	<div>
+        		<a href="ProfileStaffView.jsp">
+            	<img src="images/profile.png" alt="Profile"></a>
+        	</div>
+        <%	
+        }%>
                 </div>
             </div>
         </header>

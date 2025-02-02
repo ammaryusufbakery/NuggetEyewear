@@ -84,6 +84,29 @@
 	   text-align:center;
         }
         
+                .back-button {
+	text-align: left;
+	margin-top: 20px;
+	margin-left:20px;
+	
+}
+	
+.back-button a {
+	display: inline-block;
+	color:white;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 15px;
+	background-color: #a4713d;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+.back-button a:hover {
+	  background-color: #c4a484;
+	  color: black;
+}
+        
        
        button .footer {
 	  padding: 5px 10px;
@@ -202,12 +225,33 @@
                     </a>
                 </div>
                 <div class="menu">
-                    <a href="ProductList.jsp">PRODUCT</a>
-                    <a href="spectacleProfile.jsp">SPECTACLE PROFILE</a>
-                    <a href="OrderDetails.jsp">ORDER</a>
-                </div>
-                <div class="profile">
-                    <img src="images/profile.png" alt="Profile">
+                    <%
+        String role = (String) session.getAttribute("role");
+        if(role==null){ %>
+       		<a href="CustomerFrame.jsp">PRODUCT</a>
+       		<a href="Login.jsp">LOG IN</a>
+            <a href="Signup.jsp">SIGN UP</a>
+        <%	
+        }
+        else if(role.equals("staff")){ %>
+        	<a href="ProductList.jsp">PRODUCT</a>
+            <a href="CustomerSearch.jsp">CUSTOMER</a>
+            <a href="StaffLogout">LOG OUT</a>
+        <%
+        }%>
+        </div>
+        <div class="profile">
+            <%
+        if(role!=null && role.equals("staff")){ %>
+       		<div>
+        		<p>Welcome, ${name}</p>
+        	</div>
+        	<div>
+        		<a href="ProfileStaffView.jsp">
+            	<img src="images/profile.png" alt="Profile"></a>
+        	</div>
+        <%	
+        }%>
                 </div>
             </div>
         </header>
@@ -258,6 +302,10 @@
         out.println("<p style='color: red;'>Database error: " + e.getMessage() + "</p>");
     }
 %>
+
+<div class="back-button">
+    <a href="ProductList.jsp">&#x2190; Back</a>
+</div>
 
 <main>
 <div class="form-container">

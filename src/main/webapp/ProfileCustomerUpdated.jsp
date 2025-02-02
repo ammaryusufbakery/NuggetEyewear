@@ -142,20 +142,18 @@ display: flex;
         <%
         String role = (String) session.getAttribute("role");
         if(role==null){ %>
-       		<a href="#">FRAME</a>
-            <a href="#">LENS</a>
-       		<a href="Login.jsp">log in</a>
-            <a href="Signup.jsp">sign up</a>
+       		<a href="CustomerFrame.jsp">PRODUCT</a>
+       		<a href="Login.jsp">LOG IN</a>
+            <a href="Signup.jsp">SIGN UP</a>
         <%	
         } 
         else if (role.equals("customer")){ 
         Integer custidInt = (Integer) session.getAttribute("id");
 		int custid = custidInt;%>
-        	<a href="#">FRAME</a>
-            <a href="#">LENS</a>
+        	<a href="CustomerFrame.jsp">PRODUCT</a>
             <a href="CustomerSpectacleProfile.jsp?custid=<%= custid%>">SPECTACLE PROFILE</a>
             <a href="CustomerOrderDetails.jsp?custid=<%= custid%>">ORDER</a>
-            <a href="StaffLogout">log out</a>
+            <a href="StaffLogout">LOG OUT</a>
         <%
         }
         %>
@@ -184,6 +182,7 @@ display: flex;
     String email=null;
     String phone=null;
     String address=null;
+    String ic=null;
 
     try {
     	Connection con = OracleConnection.getConnection();
@@ -196,6 +195,7 @@ display: flex;
     			email=rs1.getString(4);
     			phone=rs1.getString(3);
     			address=rs1.getString(7);
+    			ic=rs1.getString(6);
     		}
     	
     	con.close();
@@ -211,8 +211,9 @@ display: flex;
         </div><br>
     </div>
     <div class="profile-details">
-        <p><strong>Email:</strong> <%= email %></p><br>
         <p><strong>Phone Number:</strong> <%= phone %></p><br>
+        <p><strong>Email:</strong> <%= email %></p><br>
+        <p><strong>IC Number:</strong> <%= ic %></p><br>
         <p><strong>Address:</strong> <%= address %></p><br>
     </div>
 </div>
