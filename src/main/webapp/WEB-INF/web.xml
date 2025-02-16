@@ -13,7 +13,7 @@
     <description></description>
     <display-name>AddSpecProfile</display-name>
     <servlet-name>AddSpecProfile</servlet-name>
-    <servlet-class>profile.controller.AddSpecProfile</servlet-class>
+    <servlet-class>controller.profile.AddSpecProfile</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AddSpecProfile</servlet-name>
@@ -23,7 +23,7 @@
     <description></description>
     <display-name>UpdateSpecProfile</display-name>
     <servlet-name>UpdateSpecProfile</servlet-name>
-    <servlet-class>profile.controller.UpdateSpecProfile</servlet-class>
+    <servlet-class>controller.profile.UpdateSpecProfile</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UpdateSpecProfile</servlet-name>
@@ -33,7 +33,7 @@
     <description></description>
     <display-name>CustomerSearch</display-name>
     <servlet-name>CustomerSearch</servlet-name>
-    <servlet-class>customer.controller.CustomerSearch</servlet-class>
+    <servlet-class>controller.customer.CustomerSearch</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CustomerSearch</servlet-name>
@@ -43,7 +43,7 @@
     <description></description>
     <display-name>AddOrder</display-name>
     <servlet-name>AddOrder</servlet-name>
-    <servlet-class>order.controller.AddOrder</servlet-class>
+    <servlet-class>controller.order.AddOrder</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AddOrder</servlet-name>
@@ -53,7 +53,7 @@
     <description></description>
     <display-name>CustomerAdd</display-name>
     <servlet-name>CustomerAdd</servlet-name>
-    <servlet-class>customer.controller.CustomerAdd</servlet-class>
+    <servlet-class>controller.customer.CustomerAdd</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CustomerAdd</servlet-name>
@@ -63,7 +63,7 @@
     <description></description>
     <display-name>CustomerLogin</display-name>
     <servlet-name>CustomerLogin</servlet-name>
-    <servlet-class>customer.controller.CustomerLogin</servlet-class>
+    <servlet-class>controller.customer.CustomerLogin</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CustomerLogin</servlet-name>
@@ -73,7 +73,7 @@
     <description></description>
     <display-name>StaffLogin</display-name>
     <servlet-name>StaffLogin</servlet-name>
-    <servlet-class>staff.controller.StaffLogin</servlet-class>
+    <servlet-class>controller.staff.StaffLogin</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>StaffLogin</servlet-name>
@@ -83,7 +83,7 @@
     <description></description>
     <display-name>StaffEdit</display-name>
     <servlet-name>StaffEdit</servlet-name>
-    <servlet-class>staff.controller.StaffEdit</servlet-class>
+    <servlet-class>controller.staff.StaffEdit</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>StaffEdit</servlet-name>
@@ -93,7 +93,7 @@
     <description></description>
     <display-name>StaffLogout</display-name>
     <servlet-name>StaffLogout</servlet-name>
-    <servlet-class>staff.controller.StaffLogout</servlet-class>
+    <servlet-class>controller.staff.StaffLogout</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>StaffLogout</servlet-name>
@@ -103,7 +103,7 @@
     <description></description>
     <display-name>CustomerEdit</display-name>
     <servlet-name>CustomerEdit</servlet-name>
-    <servlet-class>customer.controller.CustomerEdit</servlet-class>
+    <servlet-class>controller.customer.CustomerEdit</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CustomerEdit</servlet-name>
@@ -113,7 +113,7 @@
     <description></description>
     <display-name>UpdateOrder</display-name>
     <servlet-name>UpdateOrder</servlet-name>
-    <servlet-class>order.controller.UpdateOrder</servlet-class>
+    <servlet-class>controller.order.UpdateOrder</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UpdateOrder</servlet-name>
@@ -123,7 +123,7 @@
     <description></description>
     <display-name>AddProduct</display-name>
     <servlet-name>AddProduct</servlet-name>
-    <servlet-class>product.controller.AddProduct</servlet-class>
+    <servlet-class>controller.product.AddProduct</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AddProduct</servlet-name>
