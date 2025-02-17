@@ -85,7 +85,7 @@ public class AddSpecProfile extends HttpServlet {
 					ps.executeUpdate();
 					
 					Statement stmnt2 = con.createStatement();
-					ResultSet rs2 = stmnt2.executeQuery("SELECT specprofileid_seq.CURRVAL FROM DUAL");
+					ResultSet rs2 = stmnt2.executeQuery("SELECT SCOPE_IDENTITY()");
 					while(rs2.next()) {
 						profileid = rs2.getInt(1);
 					}
