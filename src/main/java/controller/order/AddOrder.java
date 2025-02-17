@@ -78,7 +78,7 @@ public class AddOrder extends HttpServlet {
 			ps2.executeUpdate();
 			
 			Statement stmnt = con.createStatement();
-			ResultSet rs2 = stmnt.executeQuery("SELECT orderid_seq.CURRVAL FROM DUAL");
+			ResultSet rs2 = stmnt.executeQuery("SELECT SCOPE_IDENTITY()");
 			while(rs2.next()) {
 				orderid = rs2.getInt(1);
 			}
