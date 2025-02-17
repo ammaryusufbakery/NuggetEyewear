@@ -251,7 +251,7 @@ try{
 	}
 	
 	Statement stmnt = con.createStatement();
-	ResultSet rs = stmnt.executeQuery("SELECT * FROM spectacleprofile JOIN customer USING (custid) WHERE specprofileid=" + profileid);
+	ResultSet rs = stmnt.executeQuery("SELECT * FROM spectacleprofile JOIN customer ON spectacleprofile.custid = customer.custid WHERE specprofileid=" + profileid);
 	while(rs.next()){
 		name = rs.getString(7);
 		phone = rs.getString(8);
