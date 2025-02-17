@@ -68,7 +68,7 @@ public class CustomerAdd extends HttpServlet {
 			ps1.executeUpdate();
 			
 			Statement stmnt2 = con.createStatement();
-			ResultSet rs2 = stmnt2.executeQuery("SELECT custid_seq.CURRVAL FROM DUAL");
+			ResultSet rs2 = stmnt2.executeQuery("SELECT SCOPE_IDENTITY()");
 			while(rs2.next()) {
 				id = rs2.getInt(1);
 			}
