@@ -55,7 +55,7 @@ public class CustomerAdd extends HttpServlet {
 		try {
 			Connection con = OracleConnection.getConnection();
 			
-			PreparedStatement ps1 = con.prepareStatement("INSERT INTO customer(custname, custphone, custemail,  custpass, custic, custaddress) VALUES (?,?,?,?,?,?)");
+			PreparedStatement ps1 = con.prepareStatement("INSERT INTO customer(custname, custphone, custemail,  custpass, custic, custaddress) VALUES (?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			
 			ps1.setString(1,name);
 			ps1.setString(2,phone);
@@ -67,8 +67,8 @@ public class CustomerAdd extends HttpServlet {
 			
 			ps1.executeUpdate();
 			
-			Statement stmnt2 = con.createStatement();
-			ResultSet rs2 = stmnt2.executeQuery("SELECT SCOPE_IDENTITY()");
+			//Statement stmnt2 = con.createStatement();
+			ResultSet rs2 = ps1.getGeneratedKeys();
 			while(rs2.next()) {
 				id = rs2.getInt(1);
 			}
