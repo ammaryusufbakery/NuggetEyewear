@@ -70,15 +70,15 @@ public class AddOrder extends HttpServlet {
 			}
 
 			String sql = ("INSERT INTO orderdetails(shipaddress, frameid, lensid, custid) VALUES (?,?,?,?)");
-			PreparedStatement ps2 = con.prepareStatement(sql);
+			PreparedStatement ps2 = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps2.setString(1, shipAddress);
 			ps2.setInt(2, frameid);
 			ps2.setInt(3, lensid);
 			ps2.setInt(4, custid);
 			ps2.executeUpdate();
 			
-			Statement stmnt = con.createStatement();
-			ResultSet rs2 = stmnt.executeQuery("SELECT SCOPE_IDENTITY()");
+			//Statement stmnt = con.createStatement();
+			ResultSet rs2 = ps2.getGeneratedKeys();
 			while(rs2.next()) {
 				orderid = rs2.getInt(1);
 			}
