@@ -249,7 +249,7 @@ String astigmatism=null;
 try{
 	Connection con = OracleConnection.getConnection();
 	Statement stmnt = con.createStatement();
-	ResultSet rs = stmnt.executeQuery("SELECT * FROM specprofile JOIN customer USING (custid) WHERE specprofileid=" + profileid);
+	ResultSet rs = stmnt.executeQuery("SELECT * FROM spectacleprofile JOIN customer USING (custid) WHERE specprofileid=" + profileid);
 	while(rs.next()){
 		name = rs.getString(7);
 		phone = rs.getString(8);
