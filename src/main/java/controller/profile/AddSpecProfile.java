@@ -65,16 +65,8 @@ public class AddSpecProfile extends HttpServlet {
 					}
 					System.out.println(custid);
 					
-					/*
-					 * Statement stmnt1 = con.createStatement(); ResultSet rs1 =
-					 * stmnt1.executeQuery("SELECT * FROM customer WHERE custic='" + ic + "'");
-					 * System.out.println(ic); if(rs1.next()) { custid = rs1.getInt(1);
-					 * System.out.println(rs1.getString(2)); } System.out.println(custid);
-					 */
-					
-					//String sql = "INSERT INTO profile VALUES(profileid_seq.NEXTVAL, ?,?,?,?,?)";
 					String sql = "INSERT INTO spectacleprofile(specprofileleft, specprofileright, specprofileprescription, specprofileastigmatism, custid) VALUES(?,?,?,?,?)";
-					PreparedStatement ps = con.prepareStatement(sql);
+					PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 					
 					ps.setDouble(1, powerLeft);
 					ps.setDouble(2, powerRight);
@@ -84,8 +76,8 @@ public class AddSpecProfile extends HttpServlet {
 					
 					ps.executeUpdate();
 					
-					Statement stmnt2 = con.createStatement();
-					ResultSet rs2 = stmnt2.executeQuery("SELECT SCOPE_IDENTITY()");
+					//Statement stmnt2 = con.createStatement();
+					ResultSet rs2 = ps.getGeneratedKeys();
 					while(rs2.next()) {
 						profileid = rs2.getInt(1);
 					}
