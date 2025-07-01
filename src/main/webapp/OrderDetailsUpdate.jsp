@@ -321,7 +321,7 @@ catch (Exception e){
     		
     		<!-- <br><br><label for="customerAddress">Ship Address</label> -->
     		<h1>Ship Address</h1>
-            <textarea id="shipAdress" name="shipAddress" rows="4" cols="50" style="resize: none; width: 97%;"><%= shipAddress %> </textarea>
+            <textarea id="shipAdress" name="shipAddress" rows="4" cols="50" style="resize: none; width: 97%;" required oninvalid="this.setCustomValidity('Please enter customer's address')" oninput="this.setCustomValidity('')"><%= shipAddress %> </textarea>
 
  
            <button type="submit" class="submit-button">Save</button> 
