@@ -251,14 +251,14 @@ try{
 	Statement stmnt = con.createStatement();
 	ResultSet rs = stmnt.executeQuery("SELECT * FROM spectacleprofile sp JOIN customer c ON sp.custid=c.custid WHERE sp.specprofileid=" + profileid);
 	while(rs.next()){
-		name = rs.getString(7);
-		phone = rs.getString(8);
-		email = rs.getString(9);
-		ic = rs.getString(11);
-		powerLeft = rs.getDouble(3);
-		powerRight = rs.getDouble(4);
-		prescription = rs.getString(5);
-		astigmatism = rs.getString(6);
+		name = rs.getString(8);
+		phone = rs.getString(9);
+		email = rs.getString(10);
+		ic = rs.getString(12);
+		powerLeft = rs.getDouble(2);
+		powerRight = rs.getDouble(3);
+		prescription = rs.getString(4);
+		astigmatism = rs.getString(5);
 	}
 	con.close();
 	
