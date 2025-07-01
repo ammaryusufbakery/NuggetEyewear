@@ -76,7 +76,7 @@ public class StaffLogin extends HttpServlet {
 		}
 		else {
 			request.setAttribute("error", "Incorrect Email or Password");
-			RequestDispatcher req = request.getRequestDispatcher("Login.jsp");
+			RequestDispatcher req = request.getRequestDispatcher("LoginStaff.jsp");
 			req.forward(request, response);
 		}
 	}
