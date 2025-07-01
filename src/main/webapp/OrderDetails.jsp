@@ -274,7 +274,7 @@ footer  button {
 			</div>
            
           <br><label for="customerAddress" id="addressLabel" style="display: none;">Customer Address</label>
-            <textarea id="customerAddress" name="customerAddress" rows="4" cols="50" style="display: none; resize: none; width: 97%;" required></textarea>
+            <textarea id="customerAddress" name="customerAddress" rows="4" cols="50" style="display: none; resize: none; width: 97%;"></textarea>
 
  
            <button type="submit" class="submit-button">Submit</button> 
