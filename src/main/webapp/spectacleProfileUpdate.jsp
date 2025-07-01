@@ -286,19 +286,19 @@ footer  button {
     <input type="text" id="ic" name="ic" readonly value="<%= ic %>">
 
     <label for="eyePowerLeft">Eye Power (Left)</label>
-    <input type="number" id="eyePowerLeft" name="eyePowerLeft" value="<%= eyePowerLeft %>" step="0.01">
+    <input type="number" id="eyePowerLeft" name="eyePowerLeft" value="<%= eyePowerLeft %>" step="0.01" required>
 
     <label for="eyePowerRight">Eye Power (Right)</label>
-    <input type="number" id="eyePowerRight" name="eyePowerRight" value="<%= eyePowerRight %>" step="0.01">
+    <input type="number" id="eyePowerRight" name="eyePowerRight" value="<%= eyePowerRight %>" step="0.01" required>
 
     <label for="prescription">Prescription</label>
-    <select id="prescription" name="prescription">
+    <select id="prescription" name="prescription" required>
         <option value="Short-sightedness" <%= "Short-sightedness".equals(prescription) ? "selected" : "" %>>Short-sightedness</option>
         <option value="Long-sightedness" <%= "Long-sightedness".equals(prescription) ? "selected" : "" %>>Long-sightedness</option>
     </select>
 
     <label for="astigmatism">Astigmatism</label>
-    <select id="astigmatism" name="astigmatism">
+    <select id="astigmatism" name="astigmatism" required>
         <option value="Yes" <%= "Yes".equals(astigmatism) ? "selected" : "" %>>Yes</option>
         <option value="No" <%= "No".equals(astigmatism) ? "selected" : "" %>>No</option>
     </select>
