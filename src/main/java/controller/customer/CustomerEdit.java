@@ -65,7 +65,7 @@ public class CustomerEdit extends HttpServlet {
 			System.out.println(e);
 		}
 		
-		RequestDispatcher req = request.getRequestDispatcher("ProfileCustomerUpdated.jsp");
+		RequestDispatcher req = request.getRequestDispatcher("ProfileCustomerView.jsp");
 		req.forward(request, response);
 	}
 }
