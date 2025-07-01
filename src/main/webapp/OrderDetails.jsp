@@ -240,21 +240,21 @@ footer  button {
          <h1>Order Details</h1>
         <div class = "a">
             <label for="ic">Customer IC Number :</label>
-            <input type="text" id="ic" name="ic" value="<%=request.getParameter("ic") %>" readonly/>
+            <input type="text" id="ic" name="ic" value="<%=request.getParameter("ic") %>" readonly />
 		</div>
 		<br>
 		<div class = "a">
             <label for="frameid">Frame ID :</label>
-            <input type="text" id="frameid" name="frameid"/>
+            <input type="text" id="frameid" name="frameid" required />
 		</div>
 		<br>
 		<div class = "a">
             <label for="lensid">Lens ID :</label>
-            <input type="text" id="lensid" name="lensid"/>
+            <input type="text" id="lensid" name="lensid" required />
 		</div>
            <p>Ship to outlet?</p>
             <div class="radio-group">
-                <input type="radio" id="shipYes" name="ship" value="Yes" onclick="toggleSelection()">
+                <input type="radio" id="shipYes" name="ship" value="Yes" onclick="toggleSelection()" required>
                 <label for="shipYes">Yes</label>
 
                 <input type="radio" id="shipNo" name="ship" value="No" onclick="toggleSelection()">
@@ -263,7 +263,7 @@ footer  button {
             
             <p id="outletLabel" style="display: none;">Select Outlet</p>
            <div class="outlets" id="outletDiv" style="display: none;">
-    		<select name="outlets" id="outlets">
+    		<select name="outlets" id="outlets" required>
 		        <option value="Merlimau">Merlimau</option>
 		        <option value="Masjid Tanah">Masjid Tanah</option>
 		        <option value="Bemban">Bemban</option>
@@ -274,7 +274,7 @@ footer  button {
 			</div>
            
           <br><label for="customerAddress" id="addressLabel" style="display: none;">Customer Address</label>
-            <textarea id="customerAddress" name="customerAddress" rows="4" cols="50" style="display: none; resize: none; width: 97%;"></textarea>
+            <textarea id="customerAddress" name="customerAddress" rows="4" cols="50" style="display: none; resize: none; width: 97%;" required></textarea>
 
  
            <button type="submit" class="submit-button">Submit</button> 
